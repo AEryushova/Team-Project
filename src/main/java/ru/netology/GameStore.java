@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+//ГОТОВО
 public class GameStore {
 
     private List<Game> games = new ArrayList<>();
-    public List<Game> getGames() {
-        return games;
-    }
 
     /**
      * Информация о том, какой игрок сколько играл в игры этого каталога
@@ -17,9 +15,7 @@ public class GameStore {
      * Значение - суммарное количество часов в игры этого каталога
      */
     private HashMap<String, Integer> playedTime = new HashMap<>();
-    public HashMap<String, Integer> getPlayedTime() {
-        return playedTime;
-    }
+
 
     /**
      * Создание объекта игры с заданными заголовком и жанром
@@ -54,14 +50,16 @@ public class GameStore {
      * за игрой этого каталога. Игрок задаётся по имени. Время должно
      * суммироваться с прошлым значением для этого игрока
      */
-    public void addPlayTime(String playerName, int hours) {
+    public int addPlayTime(String playerName, int hours) {
         if (playedTime.containsKey(playerName)) {
             int currentTime = playedTime.get(playerName);
             int newTime = currentTime + hours;
-            playedTime.put(playerName, newTime);
+            hours = newTime;
+            playedTime.put(playerName, hours);
         } else {
             playedTime.put(playerName, hours);
         }
+        return hours;
     }
 
     /**
@@ -91,6 +89,6 @@ public class GameStore {
             int playerTime = playedTime.get(playerName);
             sumPlayedTime = sumPlayedTime + playerTime;
         }
-            return sumPlayedTime;
+        return sumPlayedTime;
     }
 }
