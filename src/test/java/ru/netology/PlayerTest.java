@@ -161,7 +161,6 @@ public class PlayerTest {
         Game game1 = store.publishGame("Баттл Онлайн", "Аркады");
         Game game2 = store.publishGame("Баттл", "Аркады");
 
-
         Player player = new Player("Petya");
         player.installGame(game);
         player.play(game, 8);
@@ -170,10 +169,8 @@ public class PlayerTest {
         player.installGame(game2);
         player.play(game2, 1);
 
-
         Game expected = game1;
         Game actual = player.mostPlayerByGenre(game1.getGenre());
         assertEquals(expected, actual);
-
     }
 }
